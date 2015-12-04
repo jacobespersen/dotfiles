@@ -14,6 +14,8 @@ set number
 set relativenumber
 set numberwidth=4
 set laststatus=2
+
+" Color scheme
 colorscheme solarized
     
 " Mappings and shortcuts
