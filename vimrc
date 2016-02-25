@@ -23,9 +23,12 @@ set expandtab
 "let g:solarized_termcolors=256
 colorscheme solarized
 au BufNewFile,BufRead *.ejs set filetype=html
-    
+
+" font
+set guifont=*
+
 " Mappings and shortcuts
-inoremap jk <ESC>
+inoremap kl <ESC>
 let mapleader = "\<Space>"
 
 nnoremap <leader>f 1z=
@@ -36,11 +39,43 @@ map <C-n> :NERDTreeToggle<CR>
 inoremap <C-s> <esc>:w<cr>
 nnoremap <C-s> :w<cr>
 
-" Navigation
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+ "Navigation
+nnoremap j h
+nnoremap k j
+nnoremap l k
+nnoremap ; l
+nnoremap <C-k> <C-W>j
+nnoremap <C-l> <C-W>k
+nnoremap <C-[> <C-W>l
+nnoremap <C-j> <C-W>h
+
+""" Copy-paste clipboard
+"vmap <Leader>y "+y
+"vmap <Leader>d "+d
+"nmap <Leader>p "+p
+"nmap <Leader>P "+P
+"vmap <Leader>p "+p
+"vmap <Leader>P "+P
+
+""" Automatically jump to end of pasted text
+"vnoremap <silent> y y`]
+"vnoremap <silent> p p`]
+"nnoremap <silent> p p`]`
+
+" Disable mouse
+set mouse=""
+:nmap <ScrollWheelUp> <nop>
+:nmap <S-ScrollWheelUp> <nop>
+:nmap <C-ScrollWheelUp> <nop>
+:nmap <ScrollWheelDown> <nop>
+:nmap <S-ScrollWheelDown> <nop>
+:nmap <C-ScrollWheelDown> <nop>
+:nmap <ScrollWheelLeft> <nop>
+:nmap <S-ScrollWheelLeft> <nop>
+:nmap <C-ScrollWheelLeft> <nop>
+:nmap <ScrollWheelRight> <nop>
+:nmap <S-ScrollWheelRight> <nop>
+:nmap <C-ScrollWheelRight> <nop>
 
 " Open split to the right and bottom
 set splitbelow
