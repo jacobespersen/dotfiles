@@ -21,11 +21,11 @@ set expandtab
 
 " Color scheme
 "let g:solarized_termcolors=256
-colorscheme solarized
+"colorscheme solarized
 au BufNewFile,BufRead *.ejs set filetype=html
-    
+
 " Mappings and shortcuts
-inoremap jk <ESC>
+inoremap kl <ESC>
 let mapleader = "\<Space>"
 
 nnoremap <leader>f 1z=
@@ -35,12 +35,29 @@ noremap <leader>m <Esc>:CommandTBuffer<CR>
 map <C-n> :NERDTreeToggle<CR>
 inoremap <C-s> <esc>:w<cr>
 nnoremap <C-s> :w<cr>
+nnoremap <C-q> :q<Cr>
 
 " Navigation
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+nnoremap j h
+nnoremap k j
+nnoremap l k
+nnoremap ; l
+vnoremap j h
+vnoremap k j
+vnoremap l k
+vnoremap ; l
+nnoremap <C-j> <C-W><C-H>
+nnoremap <C-k> <C-W><C-J>
+nnoremap <C-l> <C-W><C-K>
+nnoremap <C-\> <C-W><C-L>
+
+" Copy-paste
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
 
 " Open split to the right and bottom
 set splitbelow
