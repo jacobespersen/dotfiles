@@ -24,6 +24,9 @@ set expandtab
 "colorscheme solarized
 au BufNewFile,BufRead *.ejs set filetype=html
 
+" font
+set guifont=*
+
 " Mappings and shortcuts
 inoremap kl <ESC>
 let mapleader = "\<Space>"
@@ -37,7 +40,7 @@ inoremap <C-s> <esc>:w<cr>
 nnoremap <C-s> :w<cr>
 nnoremap <C-q> :q<Cr>
 
-" Navigation
+ "Navigation
 nnoremap j h
 nnoremap k j
 nnoremap l k
@@ -51,13 +54,33 @@ nnoremap <C-k> <C-W><C-J>
 nnoremap <C-l> <C-W><C-K>
 nnoremap <C-\> <C-W><C-L>
 
-" Copy-paste
+" Copy-paste clipboard
 vmap <Leader>y "+y
 vmap <Leader>d "+d
 nmap <Leader>p "+p
 nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
+
+""" Automatically jump to end of pasted text
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]`
+
+" Disable mouse
+set mouse=""
+:nmap <ScrollWheelUp> <nop>
+:nmap <S-ScrollWheelUp> <nop>
+:nmap <C-ScrollWheelUp> <nop>
+:nmap <ScrollWheelDown> <nop>
+:nmap <S-ScrollWheelDown> <nop>
+:nmap <C-ScrollWheelDown> <nop>
+:nmap <ScrollWheelLeft> <nop>
+:nmap <S-ScrollWheelLeft> <nop>
+:nmap <C-ScrollWheelLeft> <nop>
+:nmap <ScrollWheelRight> <nop>
+:nmap <S-ScrollWheelRight> <nop>
+:nmap <C-ScrollWheelRight> <nop>
 
 " Open split to the right and bottom
 set splitbelow
