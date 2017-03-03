@@ -40,6 +40,9 @@ bindsym Mod1+Return exec i3-sensible-terminal
 # kill focused window
 bindsym Mod1+Shift+q kill
 
+# Lock screen
+bindsym Mod1+shift+x exec i3lock
+
 # start dmenu (a program launcher)
 bindsym Mod1+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -186,3 +189,25 @@ bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
 
 # Start nm-applet on startup, for wifi icon
 exec --no-startup-id nm-applet
+
+# set dpi
+exec xrandr --dpi 220
+
+# touchpad settings
+exec synclient MaxTapTime=0
+exec synclient PalmDetect=1
+exec synclient PalmMinWidth=8
+exec synclient PalmMinZ=100
+exec synclient HorizTwoFingerScroll=1
+exec synclient VertEdgeScroll=0
+
+# Brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+
+# Map arrows to homerow
+exec xmodmap -e "keycode 133 = Mode_switch Mode_switch"
+exec xmodmap -e "keycode 44 = j J Left"
+exec xmodmap -e "keycode 45 = k K Down"
+exec xmodmap -e "keycode 46 = l L Up"
+exec xmodmap -e "keycode 47 = 0x03a  0x03a Left"
