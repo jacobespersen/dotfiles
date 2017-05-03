@@ -1,6 +1,6 @@
 " Pathogen
 execute pathogen#infect()
-"call pathogen#helptags()
+call pathogen#helptags()
 
 " Basic settings
 syntax enable
@@ -20,14 +20,14 @@ set shiftwidth=2
 set expandtab
 
 " Color scheme
-"let g:solarized_termcolors=256
+""let g:solarized_termcolors=256
 "colorscheme solarized
 au BufNewFile,BufRead *.ejs set filetype=html
 
-" font
+"" font
 set guifont=*
 
-" Mappings and shortcuts
+"" Mappings and shortcuts
 inoremap kl <ESC>
 let mapleader = "\<Space>"
 
@@ -40,7 +40,7 @@ inoremap <C-s> <esc>:w<cr>
 nnoremap <C-s> :w<cr>
 nnoremap <C-q> :q<Cr>
 
- "Navigation
+ ""Navigation
 nnoremap j h
 nnoremap k j
 nnoremap l k
@@ -54,7 +54,7 @@ nnoremap <C-k> <C-W><C-J>
 nnoremap <C-l> <C-W><C-K>
 nnoremap <C-\> <C-W><C-L>
 
-" Copy-paste clipboard
+"" Copy-paste clipboard
 vmap <Leader>y "+y
 vmap <Leader>d "+d
 nmap <Leader>p "+p
@@ -62,7 +62,7 @@ nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
 
-""" Automatically jump to end of pasted text
+"""" Automatically jump to end of pasted text
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]`
@@ -102,22 +102,20 @@ set statusline+=%*
 " Syntastic configuration
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 
-" Autocomplete
+"" Autocomplete
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 
-" Hide GUI toolbar etc
+"" Hide GUI toolbar etc
 :set guioptions-=m  "remove menu bar
 :set guioptions-=T  "remove toolbar
 :set guioptions-=r  "remove right-hand scroll bar
 :set guioptions-=L  "remove left-hand scroll bar
 
-" HTML autocompletion
+"" HTML autocompletion
 :set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 
-" Copy-pasting
+"" Copy-pasting
 vmap <C-c> :<Esc>`>a<CR><Esc>mx`<i<CR><Esc>my'xk$v'y!xclip -selection c<CR>u
 map <Insert> :set paste<CR>i<CR><CR><Esc>k:.!xclip -o<CR>JxkJx:set nopaste<CR>
