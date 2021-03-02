@@ -7,16 +7,8 @@ alias ga="git add"
 alias gm="git commit"
 alias gp="git push"
 
-# Aliases for access to hive redis
-alias redis-production="redis-cli -h redis-10829.c1.eu-west-1-3.ec2.cloud.redislabs.com -p 10829 -a t0eXm4EvkW0QjuwsJrfWOMB5w"
-alias redis-staging="redis-cli -h redis-10818.c1.eu-west-1-3.ec2.cloud.redislabs.com -p 10818 -a G9nfAb2PpjZ9p4rkciWivqJCw"
-
 # Alias for Sublime text
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
-
-# Alias mongo db
-alias mongod="sudo /usr/local/opt/mongodb@3.6/bin/mongod"
-alias mongo="/usr/local/opt/mongodb@3.6/bin/mongo"
 
 # Track the last non-empty command. It's a bit of a hack to make sure
 # execution time and last command is tracked correctly.
