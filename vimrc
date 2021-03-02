@@ -1,6 +1,31 @@
+" Of course
+set nocompatible
+
+" Required Vundle setup
+filetype off
+set runtimepath+=~/.vim/bundle/Vundle.vim
+call vundle#rc()
+
+Bundle 'VundleVim/Vundle.vim'
+Bundle 'rking/ag.vim'
+Bundle 'jiangmiao/auto-pairs'
+Bundle 'wincent/command-t'
+Bundle 'kien/ctrlp.vim'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
+Bundle 'python-mode/python-mode'
+Bundle 'vim-syntastic/syntastic'
+Bundle 'vim-airline/vim-airline'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'jelera/vim-javascript-syntax'
+Bundle 'tpope/vim-surround'
+Bundle 'maralla/completor.vim'
+
+call vundle#end()
+
 " Pathogen
-execute pathogen#infect()
-call pathogen#helptags()
+silent! execute pathogen#infect()
+silent! call pathogen#helptags()
 
 " Basic settings
 syntax enable
@@ -26,6 +51,10 @@ au BufNewFile,BufRead *.ejs set filetype=html
 
 "" font
 set guifont=*
+
+"" The silver searcher config
+let g:ag_prg="/usr/local/Cellar/the_silver_searcher/2.1.0/bin/ag --vimgrep"
+let g:ag_working_path_mode="r"
 
 "" Mappings and shortcuts
 inoremap kl <ESC>
@@ -102,9 +131,11 @@ set statusline+=%*
 " Syntastic configuration
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
+let g:syntastic_mode_map = {'mode': 'passive'}
 
 "" Autocomplete
-let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+"let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+let g:ycm_server_python_interpreter='/usr/local/bin/python3'
 
 "" Hide GUI toolbar etc
 :set guioptions-=m  "remove menu bar
@@ -119,3 +150,16 @@ autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 "" Copy-pasting
 vmap <C-c> :<Esc>`>a<CR><Esc>mx`<i<CR><Esc>my'xk$v'y!xclip -selection c<CR>u
 map <Insert> :set paste<CR>i<CR><CR><Esc>k:.!xclip -o<CR>JxkJx:set nopaste<CR>
+"let g:pymode_lint_write = 0       "turn off running pylint on file save
+
+" Python Mode
+"let g:pymode_lint_write = 0       "turn off running pylint on file save
+"nnoremap <leader>p :PymodeLint<cr>    "pressing ,p will run plyint on current buffer
+
+" Do not create swap files
+set noswapfile
+
+" Set tab to complete Autocomplete
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
