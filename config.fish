@@ -1,11 +1,10 @@
 # Aliases for git and vim
-alias v="nvim"
-alias vim="nvim"
 alias g="git"
 alias gs="git status"
 alias ga="git add"
 alias gm="git commit"
 alias gp="git push"
+alias testing="bundle exec rspec"
 
 # Alias for Sublime text
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
@@ -35,8 +34,21 @@ end
 set -g last_exec_timestamp $now
 set  PATH /Users/user/anaconda/bin $PATH
 
-# rvm default
-status --is-interactive; and source (rbenv init -|psub)
+#status --is-interactive; and source (rbenv init -|psub)
 
 # Aliases for rails
 alias spec="bundle exec rspec"
+
+#alias psql='/Applications/Postgres.app/Contents/Versions/13/bin/psql -p5432 "postgres"'
+alias psql='/Applications/Postgres.app/Contents/Versions/13/bin/psql'
+
+# rbenv
+set --universal fish_user_paths $fish_user_paths ~/.rbenv/shims
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+eval /Users/user/anaconda3/bin/conda "shell.fish" "hook" $argv | source
+# <<< conda initialize <<<
+
+# PYTHON PATH
+set -xg PYTHONPATH /Users/user/anaconda3/bin/python:/Users/user/workspace/tensorflow/models/research:/Users/user/workspace/tensorflow/models:/Users/user/workspace/tensorflow/models/research/slim

@@ -1,12 +1,11 @@
-" Of course
 set nocompatible
-
 " Required Vundle setup
 filetype off
 set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 
 Bundle 'VundleVim/Vundle.vim'
+Plugin 'ycm-core/YouCompleteMe'
 Bundle 'rking/ag.vim'
 Bundle 'jiangmiao/auto-pairs'
 Bundle 'wincent/command-t'
@@ -20,8 +19,14 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'tpope/vim-surround'
 Bundle 'maralla/completor.vim'
+Plugin 'github/copilot.vim'
 
 call vundle#end()
+
+let g:python3_host_prog = 'path/to/python3'
+let g:python2_host_prog = 'path/to/python2'
+let g:ycm_server_keep_logfiles = 1
+let g:ycm_server_log_level = 'debug'
 
 " Pathogen
 silent! execute pathogen#infect()
@@ -45,18 +50,18 @@ set shiftwidth=2
 set expandtab
 
 " Color scheme
-""let g:solarized_termcolors=256
+"let g:solarized_termcolors=256
 "colorscheme solarized
 au BufNewFile,BufRead *.ejs set filetype=html
 
-"" font
+" font
 set guifont=*
 
-"" The silver searcher config
-let g:ag_prg="/usr/local/Cellar/the_silver_searcher/2.1.0/bin/ag --vimgrep"
+" The silver searcher config
+let g:ag_prg="/usr/local/Cellar/the_silver_searcher/2.2.0/bin/ag --vimgrep"
 let g:ag_working_path_mode="r"
 
-"" Mappings and shortcuts
+" Mappings and shortcuts
 inoremap kl <ESC>
 let mapleader = "\<Space>"
 
@@ -69,7 +74,7 @@ inoremap <C-s> <esc>:w<cr>
 nnoremap <C-s> :w<cr>
 nnoremap <C-q> :q<Cr>
 
- ""Navigation
+" Navigation
 nnoremap j h
 nnoremap k j
 nnoremap l k
@@ -83,7 +88,7 @@ nnoremap <C-k> <C-W><C-J>
 nnoremap <C-l> <C-W><C-K>
 nnoremap <C-\> <C-W><C-L>
 
-"" Copy-paste clipboard
+" Copy-paste clipboard
 vmap <Leader>y "+y
 vmap <Leader>d "+d
 nmap <Leader>p "+p
@@ -91,7 +96,7 @@ nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
 
-"""" Automatically jump to end of pasted text
+" Automatically jump to end of pasted text
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]`
@@ -117,8 +122,10 @@ set splitright
 
 " NERDtree settings
 " Close NERDtree when last file is closed
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeShowHidden=1
+nnoremap <C-h> gT
+nnoremap <C-;> gt
 
 " CtrlP
 let g:ctrlp_show_hidden = 1
@@ -133,21 +140,21 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_mode_map = {'mode': 'passive'}
 
-"" Autocomplete
+" Autocomplete
 "let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
-let g:ycm_server_python_interpreter='/usr/local/bin/python3'
+let g:ycm_server_python_interpreter='/usr/local/bin/python3.9'
 
-"" Hide GUI toolbar etc
+" Hide GUI toolbar etc
 :set guioptions-=m  "remove menu bar
 :set guioptions-=T  "remove toolbar
 :set guioptions-=r  "remove right-hand scroll bar
 :set guioptions-=L  "remove left-hand scroll bar
 
-"" HTML autocompletion
+" HTML autocompletion
 :set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 
-"" Copy-pasting
+" Copy-pasting
 vmap <C-c> :<Esc>`>a<CR><Esc>mx`<i<CR><Esc>my'xk$v'y!xclip -selection c<CR>u
 map <Insert> :set paste<CR>i<CR><CR><Esc>k:.!xclip -o<CR>JxkJx:set nopaste<CR>
 "let g:pymode_lint_write = 0       "turn off running pylint on file save
@@ -163,3 +170,15 @@ set noswapfile
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+
+"if has('python3')
+  "command! -nargs=1 Py py3 <args>
+  "set pythonthreedll=/usr/local/Frameworks/Python.framework/Versions/3.9/Python
+  "set pythonthreehome=/usr/local/Frameworks/Python.framework/Versions/3.9
+"else
+    "command! -nargs=1 Py py <args>
+    "set pythondll=/usr/local/Frameworks/Python.framework/Versions/2.7/Python
+    "set pythonhome=/usr/local/Frameworks/Python.framework/Versions/2.7
+"endif
+
+let g:CommandTPreferredImplementation='ruby'
