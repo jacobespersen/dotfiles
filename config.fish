@@ -4,7 +4,8 @@ alias gs="git status"
 alias ga="git add"
 alias gm="git commit"
 alias gp="git push"
-alias testing="bundle exec rspec"
+alias testing="RAILS_ENV=test bundle exec rspec"
+alias python=python3
 
 # Alias for Sublime text
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
@@ -32,23 +33,29 @@ if test $last_exec_timestamp
     end
 end
 set -g last_exec_timestamp $now
-set  PATH /Users/user/anaconda/bin $PATH
 
 #status --is-interactive; and source (rbenv init -|psub)
 
 # Aliases for rails
-alias spec="bundle exec rspec"
+alias spec="RAILS_ENV=test bundle exec rspec"
 
 #alias psql='/Applications/Postgres.app/Contents/Versions/13/bin/psql -p5432 "postgres"'
 alias psql='/Applications/Postgres.app/Contents/Versions/13/bin/psql'
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 
 # rbenv
 set --universal fish_user_paths $fish_user_paths ~/.rbenv/shims
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-eval /Users/user/anaconda3/bin/conda "shell.fish" "hook" $argv | source
-# <<< conda initialize <<<
+source /opt/homebrew/Cellar/chruby-fish/1.0.0/share/fish/vendor_functions.d/chruby.fish
+source /opt/homebrew/Cellar/chruby-fish/1.0.0/share/fish/vendor_conf.d/chruby_auto.fish
 
-# PYTHON PATH
-set -xg PYTHONPATH /Users/user/anaconda3/bin/python:/Users/user/workspace/tensorflow/models/research:/Users/user/workspace/tensorflow/models:/Users/user/workspace/tensorflow/models/research/slim
+set -gx PATH $PATH "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
+# Created by `pipx` on 2025-07-01 14:32:12
+set PATH $PATH /Users/jacobespersen/.local/bin
+
+# Cargo (Rust)
+set PATH $PATH /Users/jacobespersen/.cargo/bin
+
+string match -q "$TERM_PROGRAM" "kiro" and . (kiro --locate-shell-integration-path fish)
+

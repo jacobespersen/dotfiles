@@ -58,7 +58,7 @@ au BufNewFile,BufRead *.ejs set filetype=html
 set guifont=*
 
 " The silver searcher config
-let g:ag_prg="/usr/local/Cellar/the_silver_searcher/2.2.0/bin/ag --vimgrep"
+let g:ag_prg="/opt/homebrew/Cellar/the_silver_searcher/2.2.0/bin/ag --vimgrep"
 let g:ag_working_path_mode="r"
 
 " Mappings and shortcuts
